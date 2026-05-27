@@ -10,7 +10,8 @@ This analysis replicates the analytical workflow of a real fab yield investigati
 ## Dataset
 
 > **Dataset note:** This is a simulated dataset generated for analytical practice. Yield values have been scaled to create analytical variance; real production targets typically range 80–95%. All process parameter names, tool IDs, column structures, and process flow conventions reflect real semiconductor manufacturing practice.
-> **Source:** https://www.kaggle.com/datasets/ayyappanmarimuthu/semiconductor-yield
+
+
 
 | Attribute | Detail |
 |---|---|
@@ -22,6 +23,8 @@ This analysis replicates the analytical workflow of a real fab yield investigati
 | Date range | Jan–Feb 2023 (50 days) |
 | Null values | Zero across all 28 columns |
 | Key columns | `yield`, `defect_density`, `critical_dimension`, `oxide_thickness`, `vth`, `etch_rate`, `deposition_rate`, `thickness_uniformity`, tool IDs per process step |
+
+**Source:** https://www.kaggle.com/datasets/ayyappanmarimuthu/semiconductor-yield
 
 Not all product types are manufactured on every technology node — blank cells in the yield heatmap reflect realistic fab tool qualification constraints, not data gaps.
 
