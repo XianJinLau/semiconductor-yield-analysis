@@ -1,0 +1,23 @@
+etch_tool,technology_node,avg_yield,std_yield,wafer_count,fleet_mean,fleet_std,gap_vs_fleet,yield_rank,tool_status
+ETCH_01,7nm,0.61,0.16,75,0.58,0.15,0.03,1,Watch -- unstable yield
+ETCH_03,7nm,0.59,0.15,25,0.58,0.15,0.01,2,Watch -- unstable yield
+ETCH_05,7nm,0.58,0.14,50,0.58,0.15,-0.01,3,Stable
+ETCH_02,7nm,0.56,0.13,25,0.58,0.15,-0.02,4,Stable
+ETCH_04,7nm,0.54,0.13,25,0.58,0.15,-0.04,5,Stable
+ETCH_04,10nm,0.62,0.15,75,0.59,0.16,0.03,1,Best Performer -- high yield & stable
+ETCH_03,10nm,0.59,0.16,125,0.59,0.16,0,2,Watch -- unstable yield
+ETCH_02,10nm,0.59,0.17,75,0.59,0.16,-0.01,3,Watch -- unstable yield
+ETCH_01,10nm,0.58,0.15,75,0.59,0.16,-0.02,4,Stable
+ETCH_05,10nm,0.57,0.15,25,0.59,0.16,-0.02,5,Stable
+ETCH_05,14nm,0.37,0.11,25,0.34,0.09,0.03,1,Watch -- unstable yield
+ETCH_04,14nm,0.34,0.1,150,0.34,0.09,0,2,Watch -- unstable yield
+ETCH_02,14nm,0.34,0.08,25,0.34,0.09,-0.01,3,Stable
+ETCH_01,14nm,0.33,0.09,25,0.34,0.09,-0.01,4,Stable
+ETCH_03,14nm,0.33,0.07,25,0.34,0.09,-0.01,5,Stable
+ETCH_05,22nm,0.36,0.08,25,0.34,0.09,0.02,1,Best Performer -- high yield & stable
+ETCH_02,22nm,0.35,0.11,50,0.34,0.09,0.01,2,Watch -- unstable yield
+ETCH_04,22nm,0.32,0.07,50,0.34,0.09,-0.02,3,Stable
+ETCH_02,28nm,0.36,0.09,125,0.34,0.09,0.01,1,Watch -- unstable yield
+ETCH_01,28nm,0.35,0.1,50,0.34,0.09,0,2,Watch -- unstable yield
+ETCH_03,28nm,0.34,0.07,50,0.34,0.09,-0.01,3,Stable
+ETCH_05,28nm,0.33,0.07,75,0.34,0.09,-0.01,4,Stable

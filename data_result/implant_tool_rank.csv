@@ -1,0 +1,15 @@
+implant_tool,technology_node,avg_yield,std_yield,wafer_count,fleet_mean,fleet_std,gap_vs_fleet,yield_rank,tool_status
+IMP_02,7nm,0.61,0.17,25,0.58,0.15,0.03,1,Watch -- unstable yield
+IMP_03,7nm,0.59,0.14,100,0.58,0.15,0.01,2,Best Performer -- high yield & stable
+IMP_01,7nm,0.56,0.15,75,0.58,0.15,-0.02,3,Stable
+IMP_01,10nm,0.61,0.16,150,0.59,0.16,0.02,1,Watch -- unstable yield
+IMP_03,10nm,0.59,0.16,125,0.59,0.16,0,2,Watch -- unstable yield
+IMP_02,10nm,0.57,0.15,100,0.59,0.16,-0.03,3,Stable
+IMP_03,14nm,0.35,0.1,50,0.34,0.09,0.01,1,Watch -- unstable yield
+IMP_01,14nm,0.34,0.09,150,0.34,0.09,0,2,Stable
+IMP_02,14nm,0.34,0.1,50,0.34,0.09,0,3,Watch -- unstable yield
+IMP_02,22nm,0.34,0.1,100,0.34,0.09,0,1,Watch -- unstable yield
+IMP_01,22nm,0.32,0.07,25,0.34,0.09,-0.02,2,Stable
+IMP_03,28nm,0.38,0.08,50,0.34,0.09,0.03,1,Best Performer -- high yield & stable
+IMP_02,28nm,0.34,0.09,100,0.34,0.09,-0.01,2,Watch -- unstable yield
+IMP_01,28nm,0.34,0.08,150,0.34,0.09,-0.01,3,Stable
