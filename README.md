@@ -97,7 +97,7 @@ Pearson correlation computed across all 18 numeric parameters against yield. Res
 
 **Multicollinearity check (VIF)**
 Variance Inflation Factor analysis conducted in three rounds:
-- Round 1 (all 7 selected features): `defect_density` VIF = 65,312 and `thickness_uniformity` VIF = 51,923 — perfect collinearity confirmed (r = 1.00 in heatmap)
+- Round 1 (all 7 selected features): defect_density VIF = 65,312 and thickness_uniformity VIF = 51,923 — perfect collinearity confirmed (r = 1.00 in heatmap)
 - Round 2 (after removing `defect_density`): remaining features still show high VIF due to synthetic data structure
 - Round 3 (final 3 features — CD, vth, oxide_thickness): selected based on yield correlation threshold |r| > 0.30
 
@@ -116,7 +116,7 @@ Four models evaluated using 80/20 train-test split:
 
 Random Forest feature importance computed on full feature set to rank all 15 parameters by predictive contribution.
 
-> **Model note:** R² values should be interpreted with caution — this dataset is synthetically generated, which produces artificially consistent parameter-yield relationships not representative of real production variability. The feature importance rankings are the primary output of interest, not the predictive accuracy figures.
+> **Model note:** R² values should be interpreted with caution — since this dataset is synthetically generated, which produces artificially consistent parameter-yield relationships not representative of real production variability. The feature importance rankings are the primary output of interest, not the predictive accuracy figures.
 
 ---
 
