@@ -9,7 +9,7 @@ This analysis replicates the analytical workflow of a real fab yield investigati
 ---
 ## Dataset
 
-> **Dataset note:** This is a simulated dataset generated for analytical practice. Yield values have been scaled to create analytical variance; real production targets typically range 80–95%. All process parameter names, tool IDs, column structures, and process flow conventions reflect real semiconductor manufacturing practice.
+> **Dataset note:** This dataset were found on Kaggle and used for analytical practice only. All process parameter names, tool IDs, column structures, and process flow conventions reflect real semiconductor manufacturing practice.
 
 
 
@@ -22,7 +22,7 @@ This analysis replicates the analytical workflow of a real fab yield investigati
 | Process steps | Etch, Lithography, Deposition, Implant |
 | Date range | Jan–Feb 2023 (50 days) |
 | Null values | Zero across all 28 columns |
-| Key columns | `yield`, `defect_density`, `critical_dimension`, `oxide_thickness`, `vth`, `etch_rate`, `deposition_rate`, `thickness_uniformity`, tool IDs per process step |
+| Key columns | `yield`, `defect_density`, `critical_dimension`, `oxide_thickness`, `vth`, `etch_rate`, `deposition_rate`, `thickness_uniformity`, `tool ID` |
 
 **Source:** https://www.kaggle.com/datasets/ayyappanmarimuthu/semiconductor-yield
 
@@ -69,9 +69,11 @@ Tool yield benchmarking using CTEs and window functions. Fleet mean and fleet st
 
 | Status | Condition |
 |---|---|
-| Best Performer | avg_yield > fleet_mean + threshold AND std_yield ≤ fleet_std |
-| Watch — unstable yield | std_yield > fleet_std (regardless of average) |
-| Stable | avg_yield within range AND std_yield ≤ fleet_std |
+| Best Performer | (avg_yield >= fleet_mean) AND (std_yield <= fleet_std) |
+| Critical | (avg_yield < fleet_mean - 0.5*fleet_std) AND (std_yield > fleet_std) |
+| Underperforming | (avg_yield < fleet_mean - 0.5*fleet_std) AND (std_yield <= fleet_std) |
+| Watch — unstable yield | (avg_yield >= fleet_mean - 0.5*fleet_std) AND (std_yield > fleet_std) |
+| Stable | std_yield ≤ fleet_std |
 
 Key SQL techniques: `WITH` CTEs, `RANK() OVER (PARTITION BY)`, `CROSS JOIN` for fleet benchmarks, `CASE` multi-tier classification.
 
@@ -217,6 +219,17 @@ The 22nm oxide_thickness parameter shows the highest OOC rate in the fleet (0.80
 
 **5. Escalate LOT_0024 and 14nm ASIC / GPU lots for failure analysis**
 LOT_0024 (28nm FPGA, yield 0.310) is the worst-performing lot in the dataset. The 14nm ASIC and 14nm GPU lots rank consistently in the bottom tier of their peer groups. The ETCH_04 + LITHO_04 tool combination appears repeatedly across Critical lots on 14nm and 22nm. Recommend cross-referencing these lots with equipment maintenance logs and consumable change records to identify a common root cause.
+
+## Conclusion
+
+This project demonstrates an end-to-end analytical workflow applied to a semiconductor manufacturing context — from raw data profiling through SQL, to statistical modelling in Python, to an interactive multi-stakeholder Power BI dashboard.
+
+Across 1,250 wafers, 50 lots, and five technology nodes, three consistent findings emerge. First, **critical_dimension is the dominant yield driver** — confirmed independently by Pearson correlation (r = -0.653), boxplot separation (~5nm median difference between yield groups), and Random Forest feature importance (57.9%). This convergence across three analytical methods strengthens confidence in the finding beyond what any single method alone could provide. Second, **14nm exhibits a systemic yield suppression** affecting all five product types — a pattern that points to node-level process conditions rather than individual tool failures, and that would constitute a high-priority investigation item in a real production environment. Third, **tool variance is as important as tool average yield** — Watch-flagged tools with elevated std_yield represent a process stability risk that average-only rankings would miss entirely.
+
+The synthetic nature of the dataset imposes known limitations: the SPC-to-yield correlation is weaker than real production data would produce, model R² values are artificially inflated, and the 50-day date range prevents meaningful time-series analysis. These limitations are documented transparently throughout — not concealed — because accurate interpretation of analytical outputs is as important as the outputs themselves.
+
+Five engineering recommendations are prioritised by expected yield impact, covering tool qualification review, node-level process investigation, CD control tightening, OOC action protocols, and critical lot escalation. Together they form a structured action plan that translates analytical 
+findings into operational next steps — the intended output of any engineering data analysis.
 
 ## Author
 
